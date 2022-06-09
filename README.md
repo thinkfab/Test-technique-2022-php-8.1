@@ -17,7 +17,7 @@ Par contre, je te demanderai de poser des questions lors de l'entretien que nous
 
 Pour installer le projet, tu dois exécuter la commande `make install` à la racine du dossier. Tu auras le temps de faire couler un café ! *(Nous aimons bien le café)*
 
-Si tu rencontres un souci au moment de l'installation, fais moi en pars tout de suite, soit par mail ps@thinkfab.fr, soit via [linkedin](https://www.linkedin.com/in/paul-strentz/) *(je suis plus reactif sur LinkedIn)*
+Si tu rencontres un souci au moment de l'installation, consulte [les erreurs communes](#erreurs-communes-lors-de-linstallation) fais moi en pars tout de suite, soit par mail ps@thinkfab.fr, soit via [linkedin](https://www.linkedin.com/in/paul-strentz/) *(je suis plus reactif sur LinkedIn)*
 
 Pour réaliser ce test tu devras créer une nouvelle branche en partant de main. La branche devra se nommer en suivant ce pattern:
 NOM_Prénom. 
@@ -59,3 +59,8 @@ Le nom de l'utilisateur est obligatoire et la date de création doit être gén�
 *Pour cette troisième partie il n'y a pas d'attendu d'un point de vue design en particulier. Mais il faut que ca s'integre bien dans le site.*
 
 
+### Erreurs communes lors de l'installation
+><span style="background-color:#f55f69; color:black;">Could not create database test-technique for connection named default</span></br>
+ <span style="background-color:#f55f69; color:black;">An exception occurred while executing a query: SQLSTATE[HY000]: General error: 1007 Can't create database 'test-technique'; database exists</span>
+
+il faudra lancer alors la commande `make db-drop` puis de relancer la commande `make install`
