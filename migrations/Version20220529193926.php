@@ -19,7 +19,7 @@ final class Version20220529193926 extends AbstractMigration
 
     public function up(Schema $schema): void
     {
-        $this->addSql("INSERT INTO user (email, roles, password, display_name) VALUES ('strentz.paul@gmail.com', '[\"ROLE_ADMIN\"]', '\$2y\$13\$PpPBTHFFnOI2tteaR8IFWuKZLSI6QV6ZdBVmaWO2EnFvvF0jXt/Ny', 'Paul STRENTZ')");
+        $this->addSql("INSERT INTO user (email, roles, password, display_name) VALUES ('test@technique.com', '[\"ROLE_ADMIN\"]', '\$2y\$13\$nCoHOJoouPElnU/YdDeere3YF8Zy7scP/F7un6LiSqnAAxM4EI8HG', 'User test technique')");
     }
 
     public function down(Schema $schema): void

@@ -13,6 +13,9 @@ services:
       - 3346:3306
     volumes:
       - "./docker/db/mysql:/var/lib/mysql"
+    environment:
+      MYSQL_ROOT_PASSWORD: p@ssword
+      MYSQL_DATABASE: test-technique
   maildev:
     image: djfarrelly/maildev
     ports:
@@ -35,7 +38,6 @@ services:
 
   php:
     env_file:
-      - .env.local
       - .env
     environment:
       PHP_EXTENSION_XDEBUG: 1

@@ -24,12 +24,13 @@ class ArticleFixtures extends AbstractBaseFixtures implements DependentFixtureIn
         /** @var User $user */
         $user = $this->getReference(self::USER_REF);
         for ($i = 0; $i < self::NUMBER_OF_ARTICLES; $i++) {
+            $charNumber = random_int(700, 5000);
             $titre = "Article #$i : " . $faker->word;
             $slug = $this->slugger->slug($titre);
             $article = new Article();
             $article->setTitre($titre)
                 ->setSlug($slug)
-                ->setContent($faker->sentence(50, true))
+                ->setContent($faker->realText($charNumber))
                 ->setCreatedAt(DateTimeImmutable::createFromMutable($faker->dateTime))
                 ->setIsPublished(true)
                 ->setUser($user);

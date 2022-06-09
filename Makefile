@@ -7,7 +7,6 @@ export HOST_USER
 export HOST_GROUP_ID
 
 DOCKER_COMPOSE_DEV = docker-compose -f docker-compose.yml -f docker-compose.dev.yml
-DOCKER_COMPOSE_PROD = docker-compose -f docker-compose.yml -f docker-compose.prod.yml --env=.env.prod.local
 
 
 help: ## Display available commands
@@ -22,8 +21,16 @@ install: ## Install docker stack, assets and vendors
 	$(DOCKER_COMPOSE_DEV) build
 	$(MAKE) composer-install
 	$(MAKE) assets-install
+	$(MAKE) start
+	$(MAKE) db-create
 	$(MAKE) db-migrate
 	$(MAKE) js-deps-install
+	$(MAKE) fixtures-install
+	$(MAKE) build-assets
+	@echo "Now you can access http://localhost:8088"
+
+db-create: ## Migrate database
+	$(DOCKER_COMPOSE_DEV) run --rm php bash -ci 'php bin/console doctrine:database:create'
 
 db-migrate: ## Migrate database
 	$(DOCKER_COMPOSE_DEV) run --rm php bash -ci 'php bin/console doctrine:migration:migrate --no-interaction'
@@ -101,32 +108,5 @@ composer-require: ## Add composer dependencies
 composer-update: ## Update composer dependencies
 	@read -p "Enter vendor name: (empty to update all)" vendor; \
 	$(DOCKER_COMPOSE_DEV) run --rm php bash -ci "php -d memory_limit=-1 bin/composer update $$vendor"
-
-# =====================================================================
-# Production  =========================================================
-# =====================================================================
-
-deploy_prod: ## Deploy config
-	git pull
-	$(DOCKER_COMPOSE_PROD) pull
-	$(DOCKER_COMPOSE_PROD) build
-	$(DOCKER_COMPOSE_PROD) run --rm php bash -ci 'php bin/composer install --no-dev --optimize-autoloader -n'
-	$(DOCKER_COMPOSE_PROD) run --rm php bash -ci 'php bin/console assets:install -n'
-	$(DOCKER_COMPOSE_PROD) run --rm php bash -ci 'php bin/console doctrine:migration:migrate --no-interaction'
-	$(MAKE) deploy_prod_start
-	$(MAKE) deploy_prod_status
-
-deploy_prod_stop:
-	$(DOCKER_COMPOSE_PROD) down
-
-deploy_prod_start:
-	$(DOCKER_COMPOSE_PROD) up -d
-	$(DOCKER_COMPOSE_PROD) run --rm php bash -ci './clear-cache.sh'
-
-deploy_prod_status:
-	$(DOCKER_COMPOSE_PROD) ps
-
-deploy_prod_connect:
-	$(DOCKER_COMPOSE_PROD) exec php bash
 
 default: help

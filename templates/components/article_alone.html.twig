@@ -21,17 +21,15 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-12">
-                <div class="col-12 article-alone-tags-container m-t-0">
-                    {% for tag in tags %}
-                        {{ component('tag', {
-                            color       : tag.colorHexa,
-                            intitule    : tag.intitule,
-                            class       : 'article-alone--tag',
-                            slug        : tag.slug
-                        }) }}
-                    {% endfor %}
-                </div>
+            <div class="col-12 article-alone-tags-container m-t-0">
+                {% for tag in tags %}
+                    {{ component('tag', {
+                        color       : tag.colorHexa,
+                        intitule    : tag.intitule,
+                        class       : 'article-alone--tag',
+                        slug        : tag.slug
+                    }) }}
+                {% endfor %}
             </div>
         </div>
         <div class="row">

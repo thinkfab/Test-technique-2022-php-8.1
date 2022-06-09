@@ -18,10 +18,11 @@ class CommentFixtures extends AbstractBaseFixtures implements DependentFixtureIn
             /** @var Article $article */
             $article = $this->getReference(self::ARTICLE_REF . $i);
             for ($ii = 0; $ii < $numberOfComment; $ii++) {
+                $charNumber = random_int(50, 500);
                 $comment = new Commentaire();
                 $comment->setArticle($article)
                     ->setUsername($faker->userName)
-                    ->setContent($faker->sentence(20, true))
+                    ->setContent($faker->realText($charNumber))
                     ->setCreatedAt(DateTimeImmutable::createFromMutable($faker->dateTime));
                 $manager->persist($comment);
                 $manager->flush();
