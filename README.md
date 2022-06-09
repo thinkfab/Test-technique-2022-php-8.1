@@ -17,7 +17,14 @@ Par contre, je te demanderai de poser des questions lors de l'entretien que nous
 
 Pour installer le projet, tu dois exécuter la commande `make install` à la racine du dossier. Tu auras le temps de faire couler un café ! *(Nous aimons bien le café)*
 
-Si tu rencontres un souci au moment de l'installation, fais moi en pars tout de suite, soit par mail ps@thinkfab.fr, soit via [linkedin](https://www.linkedin.com/in/paul-strentz/) *(je suis plus reactif sur LinkedIn)*
+Si tu rencontres un souci au moment de l'installation, consulte [les erreurs communes](#erreurs-communes-lors-de-linstallation) fais moi en pars tout de suite, soit par mail ps@thinkfab.fr, soit via [linkedin](https://www.linkedin.com/in/paul-strentz/) *(je suis plus reactif sur LinkedIn)*
+
+Pour réaliser ce test tu devras créer une nouvelle branche en partant de main. La branche devra se nommer en suivant ce pattern:
+NOM_Prénom. 
+
+Tu devras réaliser un commit par objectif en suivant ce pattern exemple: "feature: decription de la feature -- Objectif 1"
+
+Tu devras pusher ton travail et m'en informer, soit par mail ps@thinkfab.fr, soit via [linkedin](https://www.linkedin.com/in/paul-strentz/)
 
 ## Comment fonctionne le projet
 Ce projet utilise EasyAdmin 4 la route d'accès au login de connexion est [http://localhost:8088/login/login-admin-interface](http://localhost:8088/login/login-admin-interface)
@@ -49,6 +56,11 @@ l'attendu :
 Lors de ce troisième objectif, je souhaite pouvoir bénéficier de la fonctionnalité d'ajout d'un commentaire à un article.
 Le nom de l'utilisateur est obligatoire et la date de création doit être générée automatiquement. Un petit plus serait de pouvoir utiliser un champ de texte CKEditor.
 
-*Pour cette deuxieme partie il n'y a pas d'attendu d'un point de vue design en particulier. Mais il faut que ca s'integre bien dans le site.*
+*Pour cette troisième partie il n'y a pas d'attendu d'un point de vue design en particulier. Mais il faut que ca s'integre bien dans le site.*
 
 
+### Erreurs communes lors de l'installation
+><span style="background-color:#f55f69; color:black;">Could not create database test-technique for connection named default</span></br>
+ <span style="background-color:#f55f69; color:black;">An exception occurred while executing a query: SQLSTATE[HY000]: General error: 1007 Can't create database 'test-technique'; database exists</span>
+
+il faudra lancer alors la commande `make db-drop` puis de relancer la commande `make install`

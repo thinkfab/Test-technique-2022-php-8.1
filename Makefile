@@ -109,4 +109,7 @@ composer-update: ## Update composer dependencies
 	@read -p "Enter vendor name: (empty to update all)" vendor; \
 	$(DOCKER_COMPOSE_DEV) run --rm php bash -ci "php -d memory_limit=-1 bin/composer update $$vendor"
 
+db-drop:
+	$(DOCKER_COMPOSE_DEV) run --rm php bash -ci "php bin/console d:d:drop --force"
+
 default: help
