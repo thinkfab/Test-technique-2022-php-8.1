@@ -1,0 +1,34 @@
+{% set pathToArticle = tagSlug is defined and tagSlug is not null ? path('article_with_tag', {'slugTag' : tagSlug, 'slug' : slug }) : path('article_index', {'slug' : slug}) %}
+<div class="row{% if shortContent is same as true %} articles--article-short-container{% endif %} m-b-20">
+    <div class="col-12 col-md-6 offset-md-3 m-b-20">
+        <a href="{{ pathToArticle }}" class="articles--article-link">
+        <div class="row m-b-5">
+            <div class="col-6 articles--article-short-date">
+                {{ render_date(createdAt) ~ ' - ' ~ auteur  }}
+                <span class="badge badge-pill articles--article-short-commentaires m-l-5" data-bs-toggle="tooltip" data-bs-placement="top" title="{{ 'comment.label_count'|trans }}">{{ commentaires.count }}</span>
+            </div>
+            <div class="col-12 m-b-2">
+                <h2 class="articles--article-short-title m-0">{{ titre }}</h2>
+            </div>
+            <div class="col-12 articles--article-short-tags-container m-t-0">
+                {% for tag in tags %}
+                    {{ component('tag', {
+                        color       : tag.colorHexa,
+                        intitule    : tag.intitule,
+                        class       : 'articles--article-short-tag',
+                        slug        : tag.slug
+                    }) }}
+                {% endfor %}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <p class="articles--article-short-content m-b-10">
+                    {{ content|raw }}
+                </p>
+            </div>
+        </div>
+        </a>
+    </div>
+</div>
+

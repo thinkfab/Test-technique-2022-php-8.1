@@ -1,0 +1,11 @@
+grumphp:
+    tasks:
+        shell:
+            scripts:
+                - [ "-c", "bin/local-php-security-checker_1.0.0_linux_amd64" ]
+        git_commit_message:
+            allow_empty_message: false
+            max_subject_width: 72
+            matchers:
+                'Must contain technical or feature or bugfix (ex. feature: commit_message | technical: commit_message| bugfix: commit_message)': '/^((feature|bugfix|technical)\: ).+/'
+            enforce_capitalized_subject: false

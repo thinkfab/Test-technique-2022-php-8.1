@@ -1,0 +1,22 @@
+global:
+  author_label: Auteur
+  created_at: Créé le
+  is_published: Publié
+  home_label: Accueil
+  login_label: Connexion
+  email_label: Email
+  password_label: Mot de passe
+  sign-in_label: Se connecter
+article:
+  label: Article
+  label_plurialized: Articles
+  content_label: Contenu
+  title_label: Titre
+  slug_label: Slug
+tag:
+  label: Etiquette
+  label_plurialized: Etiquettes
+  color_label: Couleur
+  intitule_label: Intitule
+comment:
+  label_count: Nombre de commentaires

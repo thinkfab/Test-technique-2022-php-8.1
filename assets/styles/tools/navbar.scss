@@ -1,0 +1,36 @@
+.navbar-sticky--custom {
+  background-color: rgba(251, 251,251, 0.8);
+
+  & a {
+    color: #000;
+    transition: all 0.2s;
+    text-transform: uppercase;
+    &:hover, &:focus {
+      color: #7952B3;
+    }
+  }
+
+  & .brand--custom {
+    font-weight: 800;
+    color: #fbfbfb;
+    margin-left: 20px;
+    font-size: 2em;
+    background-color: #7952B3;
+    padding: 5px 10px;
+    border-radius: 10px;
+    text-transform: uppercase;
+
+    &:hover, &:focus {
+      color: #fbfbfb;
+    }
+  }
+}
+.link.nav-link.active {
+  font-weight: 700 !important;
+  transition: all 0.2s;
+}
+.menu-dots--custom:focus {
+  outline-style: none !important;
+  box-shadow: none;
+}
+

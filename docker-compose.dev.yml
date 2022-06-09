@@ -1,0 +1,43 @@
+version: '3'
+
+services:
+  mysql:
+    image: mysql:8.0
+    restart: "no"
+    command: "--default-authentication-plugin=mysql_native_password --innodb-use-native-aio=0"
+    healthcheck:
+      test: "/etc/init.d/mysql status"
+      timeout: 1s
+      retries: 60
+    ports:
+      - 3346:3306
+    volumes:
+      - "./docker/db/mysql:/var/lib/mysql"
+  maildev:
+    image: djfarrelly/maildev
+    ports:
+      - "1110:80"
+      - "1055:25"
+
+  yarn:
+    build: docker/yarn
+    user: "${HOST_UID:-1000}:${HOST_GROUP_ID:-1000}"
+    volumes:
+      - ./:/home/node/app
+      - ~/.ssh:/home/node/.ssh
+
+  server_web:
+    volumes:
+      - "./docker/apache/dev.conf:/usr/local/apache2/conf/extra/httpd-vhosts.conf:ro"
+    ports:
+      - "8088:80"
+      - "8443:443"
+
+  php:
+    env_file:
+      - .env.local
+      - .env
+    environment:
+      PHP_EXTENSION_XDEBUG: 1
+    depends_on:
+      - mysql

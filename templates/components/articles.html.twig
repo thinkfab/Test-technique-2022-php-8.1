@@ -1,0 +1,15 @@
+{% for article in this.articles %}
+    <div class="articles--container">
+        {{ component('article', {
+            id              : article.id,
+            slug            : article.slug,
+            titre           : article.titre,
+            content         : article.content,
+            createdAt       : article.createdAt,
+            tags            : article.tags,
+            auteur          : article.auteur,
+            commentaires    : article.commentaires,
+            shortContent    : true
+        }) }}
+    </div>
+{% endfor %}
