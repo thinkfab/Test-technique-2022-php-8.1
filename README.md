@@ -11,7 +11,7 @@ Par contre, je te demanderai de poser des questions lors de l'entretien que nous
 
 **<span style="color: red;">Pour réaliser ce test technique, tu dois au préalable avoir installé Docker et Docker-compose sur ta machine.</span>**
 
-**<span style="color: cyan;">Si tu utilises Windows ou mac il faudra php:8.1 - Yarn - Mysql d'installé sur ta machine</span>**
+**<span style="color: cyan;">Si tu utilises Windows ou mac il faudra php:8.1 - Yarn - Mysql - Composer - Symfony cli d'installé sur ta machine</span>**
 
 ----
 
