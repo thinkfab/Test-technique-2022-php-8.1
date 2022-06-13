@@ -11,12 +11,25 @@ Par contre, je te demanderai de poser des questions lors de l'entretien que nous
 
 **<span style="color: red;">Pour réaliser ce test technique, tu dois au préalable avoir installé Docker et Docker-compose sur ta machine.</span>**
 
+**<span style="color: cyan;">Si tu utilises Windows ou mac il faudra php:8.1 - Yarn - Mysql d'installé sur ta machine</span>**
+
 ----
 
 ## Installation
-
+### Docker :
 Pour installer le projet, tu dois exécuter la commande `make install` à la racine du dossier. Tu auras le temps de faire couler un café ! *(Nous aimons bien le café)*
 
+### Windows/MAC
+Il faudra que tu lances les commandes suivantes pour faire tourner le projet sur ton poste:
+```shell
+php -d memory_limit=4G bin/composer install     // installation des bundles externes
+bin/console d:d:create                          // creation de la bdd
+bin/console d:m:migrate                         // execution des migrations
+bin/console d:f:l --append                      // execution des fixtures
+yarn install                                    // installation des dependance yarn
+yarn encore dev                                 // build des fichiers 
+symfony server:start                            // lancement du server symfony
+```
 Si tu rencontres un souci au moment de l'installation, consulte [les erreurs communes](#erreurs-communes-lors-de-linstallation) fais moi en pars tout de suite, soit par mail ps@thinkfab.fr, soit via [linkedin](https://www.linkedin.com/in/paul-strentz/) *(je suis plus reactif sur LinkedIn)*
 
 Pour réaliser ce test tu devras créer une nouvelle branche en partant de main. La branche devra se nommer en suivant ce pattern:
