@@ -50,6 +50,7 @@ Pour le reste de l'application, son fonctionnement est relativement simple à co
 Tu n'auras pas besoin de te connecter en tant qu'admin pour la réalisation de ce test technique.
 Hormis pour te générer de nouvelles données.
 
+Pour commencer le test, une fois l'installation finalisée, je t'invite à te rendre sur l'url suivante [http://localhost:8088/read-me/consignes](http://localhost:8088/read-me/consignes)
 ## <u>Objectif 1</u> *(obligatoire)*
 Le but de ce test est d'afficher les commentaires dans les pages d'articles. Il faudra utiliser [Symfony UX Twig Components](https://symfony.com/bundles/ux-twig-component/current/index.html).
 
