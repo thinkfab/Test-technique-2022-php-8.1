@@ -87,15 +87,13 @@
                         </div>
                         <div class="col-12 d-none" id="contentCollapseConfirmedReact">
                             <div class="card card-body consignes">
-                                Trois
-                                <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto aut commodi
-                                    consequuntur delectus dicta, eaque excepturi ipsam, labore necessitatibus non possimus
-                                    saepe sapiente. Distinctio enim impedit, natus quisquam tenetur unde!
-                                </div>
-                                <div>In obcaecati, odio. A accusantium alias aliquam asperiores, aut consequuntur culpa
-                                    deserunt dicta dignissimos enim eos error ex fugit ipsam iusto magnam minus provident
-                                    quaerat quidem sint soluta ullam ut.
-                                </div>
+                                {% apply markdown_to_html %}
+                                    Je t'ai mis a disposition une api qui expose les articles, les tags et les users.
+                                    Cette api est accessible via cette url <a href="http://localhost:8088/api" data-no-swup target="_blank">http://localhost:8088/api</a>
+                                    Il n'y a besoin d'authentification pour recuperer les informations de cette API
+                                ## <u>Objectif 1</u>
+
+                                {% endapply %}
                             </div>
                         </div>
                     </div>

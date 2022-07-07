@@ -16,8 +16,8 @@ use Symfony\Component\Serializer\Annotation\Groups;
 #[ApiResource(
     collectionOperations: ['get' => ['normalization_context' => ['groups' => 'article:list']]],
     itemOperations: ['get' => ['normalization_context' => ['groups' => 'article:item']]],
-    order: ['createdAt' => 'DESC', 'titre' => 'ASC'],
-    paginationEnabled: false,
+    attributes: ["pagination_items_per_page" => 10],
+    order: ['createdAt' => 'DESC', 'titre' => 'ASC']
 )]
 class Article
 {
