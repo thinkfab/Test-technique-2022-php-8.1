@@ -15,7 +15,7 @@ class ArticleController extends AbstractController
      * @param ArticleManagerInterface $articleManager
      * @return Response
      */
-    #[Route('/{slug}', name: 'article_index')]
+    #[Route('/article/{slug}', name: 'article_index')]
     public function articleAction(
         string $slug,
         ArticleManagerInterface $articleManager
@@ -33,7 +33,7 @@ class ArticleController extends AbstractController
      * @param TagManagerInterface $tagManager
      * @return Response
      */
-    #[Route('/tag/{slugTag}/{slug}/', name: 'article_with_tag')]
+    #[Route('/tag/{slugTag}/article/{slug}/', name: 'article_with_tag')]
     public function articleWithTagAction(
         string $slugTag,
         string $slug,

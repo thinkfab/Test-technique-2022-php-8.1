@@ -2,45 +2,61 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\ArticleRepository;
 use DateTimeImmutable;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: ArticleRepository::class)]
 #[UniqueEntity('slug')]
+#[ApiResource(
+    collectionOperations: ['get' => ['normalization_context' => ['groups' => 'article:list']]],
+    itemOperations: ['get' => ['normalization_context' => ['groups' => 'article:item']]],
+    order: ['createdAt' => 'DESC', 'titre' => 'ASC'],
+    paginationEnabled: false,
+)]
 class Article
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
+    #[Groups(['article:list', 'article:item'])]
     private $id;
 
     #[ORM\Column(type: 'string', length: 255)]
+    #[Groups(['article:list', 'article:item'])]
     private $titre;
 
     #[ORM\Column(type: 'text')]
+    #[Groups(['article:list', 'article:item'])]
     private $content;
 
     #[ORM\Column(type: 'datetime_immutable')]
+    #[Groups(['article:list', 'article:item'])]
     private $createdAt;
 
     #[ORM\Column(type: 'boolean')]
+    #[Groups(['article:list', 'article:item'])]
     private $isPublished;
 
     #[ORM\OneToMany(mappedBy: 'article', targetEntity: Commentaire::class, orphanRemoval: true)]
     private $commentaires;
 
     #[ORM\ManyToMany(targetEntity: Tag::class, mappedBy: 'article')]
+    #[Groups(['article:list', 'article:item'])]
     private $tags;
 
     #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'articles')]
     #[ORM\JoinColumn(nullable: false)]
+    #[Groups(['article:list', 'article:item'])]
     private $user;
 
     #[ORM\Column(type: 'string', length: 255)]
+    #[Groups(['article:list', 'article:item'])]
     private $slug;
 
     public function __construct()

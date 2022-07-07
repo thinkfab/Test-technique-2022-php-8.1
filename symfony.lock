@@ -23,6 +23,23 @@
     "amphp/sync": {
         "version": "v1.4.2"
     },
+    "api-platform/api-pack": {
+        "version": "v1.3.0"
+    },
+    "api-platform/core": {
+        "version": "2.6",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "main",
+            "version": "2.5",
+            "ref": "05b57782a78c21a664a42055dc11cf1954ca36bb"
+        },
+        "files": [
+            "config/packages/api_platform.yaml",
+            "config/routes/api_platform.yaml",
+            "src/Entity/.gitignore"
+        ]
+    },
     "babdev/pagerfanta-bundle": {
         "version": "v3.7.0"
     },
@@ -134,6 +151,9 @@
     "egulias/email-validator": {
         "version": "3.1.2"
     },
+    "fig/link-util": {
+        "version": "1.2.0"
+    },
     "friendsofphp/proxy-manager-lts": {
         "version": "v1.0.12"
     },
@@ -157,6 +177,18 @@
     },
     "monolog/monolog": {
         "version": "2.6.0"
+    },
+    "nelmio/cors-bundle": {
+        "version": "2.2",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "main",
+            "version": "1.5",
+            "ref": "6bea22e6c564fba3a1391615cada1437d0bde39c"
+        },
+        "files": [
+            "config/packages/nelmio_cors.yaml"
+        ]
     },
     "nette/schema": {
         "version": "v1.2.2"
@@ -408,6 +440,9 @@
     "symfony/options-resolver": {
         "version": "v5.4.3"
     },
+    "symfony/orm-pack": {
+        "version": "v2.2.0"
+    },
     "symfony/password-hasher": {
         "version": "v5.4.8"
     },
@@ -492,6 +527,9 @@
     },
     "symfony/serializer": {
         "version": "v5.4.9"
+    },
+    "symfony/serializer-pack": {
+        "version": "v1.1.0"
     },
     "symfony/service-contracts": {
         "version": "v2.5.1"
@@ -622,5 +660,8 @@
     },
     "webmozart/assert": {
         "version": "1.10.0"
+    },
+    "willdurand/negotiation": {
+        "version": "3.1.0"
     }
 }
