@@ -163,6 +163,12 @@
   }
 }
 
+@for $i from 0 through 100 {
+  .width-#{$i} {
+    width: #{$i}#{"%"} !important;
+  }
+}
+
 * {
   font-family: 'barlow', sans-serif;
   padding: 0;
@@ -182,4 +188,12 @@ body {
 }
 .text-right {
   text-align: right !important;
+}
+.text-justify {
+  text-align: justify !important;
+}
+.card-body {
+  img {
+    max-width: 40vw;
+  }
 }

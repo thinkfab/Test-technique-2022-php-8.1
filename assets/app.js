@@ -13,6 +13,13 @@ import * as bootstrap from 'bootstrap';
 // start the Stimulus application
 const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
 const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+const collapseTriggerList = document.querySelectorAll('[data-bs-toggle="collapse"]')
+const collapseList = [...collapseTriggerList].map(collapseTriggerEl => new bootstrap.Collapse(collapseTriggerEl))
+
+
+const $ = require("jquery");
+
+global.$ = global.jQuery = $;
 
 import { startStimulusApp } from '@symfony/stimulus-bridge';
 

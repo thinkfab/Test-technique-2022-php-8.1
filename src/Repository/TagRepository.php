@@ -9,6 +9,8 @@ use Doctrine\ORM\NonUniqueResultException;
 use Doctrine\ORM\Query\Expr\Join;
 use Doctrine\ORM\QueryBuilder;
 use Doctrine\Persistence\ManagerRegistry;
+use Pagerfanta\Doctrine\ORM\QueryAdapter;
+use Pagerfanta\Pagerfanta;
 
 /**
  * @extends ServiceEntityRepository<Tag>
@@ -41,6 +43,22 @@ class TagRepository extends ServiceEntityRepository
         if ($flush) {
             $this->getEntityManager()->flush();
         }
+    }
+
+    /**
+     * @param int $limit
+     * @param int $page
+     * @return Pagerfanta
+     */
+    public function findAllTags(int $limit = 10, int $page = 1): Pagerfanta
+    {
+        $tAlias = DoctrineHelper::ALIAS_TAG;
+        $query = $this->createQueryBuilder($tAlias);
+        //        $query->orderBy("$tAlias.intitule", DoctrineHelper::ORDER_ASC);
+        $pagerfanta = new Pagerfanta(new QueryAdapter($query, true, false));
+        $pagerfanta->setMaxPerPage($limit)
+            ->setCurrentPage($page);
+        return $pagerfanta;
     }
 
     /**

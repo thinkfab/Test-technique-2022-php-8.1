@@ -23,6 +23,12 @@
     "amphp/sync": {
         "version": "v1.4.2"
     },
+    "babdev/pagerfanta-bundle": {
+        "version": "v3.7.0"
+    },
+    "dflydev/dot-access-data": {
+        "version": "v3.0.1"
+    },
     "doctrine/annotations": {
         "version": "1.13",
         "recipe": {
@@ -143,14 +149,35 @@
     "laravel/serializable-closure": {
         "version": "v1.2.0"
     },
+    "league/commonmark": {
+        "version": "2.3.3"
+    },
+    "league/config": {
+        "version": "v1.1.1"
+    },
     "monolog/monolog": {
         "version": "2.6.0"
+    },
+    "nette/schema": {
+        "version": "v1.2.2"
+    },
+    "nette/utils": {
+        "version": "v3.2.7"
     },
     "nikic/php-parser": {
         "version": "v4.13.2"
     },
     "ondram/ci-detector": {
         "version": "4.1.0"
+    },
+    "pagerfanta/core": {
+        "version": "v3.6.1"
+    },
+    "pagerfanta/doctrine-orm-adapter": {
+        "version": "v3.6.1"
+    },
+    "pagerfanta/twig": {
+        "version": "v3.6.1"
     },
     "phpdocumentor/reflection-common": {
         "version": "2.2.0"
@@ -196,9 +223,6 @@
         "files": [
             "config/packages/sensio_framework_extra.yaml"
         ]
-    },
-    "symfony/amqp-messenger": {
-        "version": "v5.4.5"
     },
     "symfony/asset": {
         "version": "v5.4.7"
@@ -426,9 +450,6 @@
     "symfony/proxy-manager-bridge": {
         "version": "v5.4.6"
     },
-    "symfony/redis-messenger": {
-        "version": "v5.4.6"
-    },
     "symfony/routing": {
         "version": "5.4",
         "recipe": {
@@ -591,6 +612,9 @@
         "version": "v5.4.3"
     },
     "twig/extra-bundle": {
+        "version": "v3.4.0"
+    },
+    "twig/markdown-extra": {
         "version": "v3.4.0"
     },
     "twig/twig": {

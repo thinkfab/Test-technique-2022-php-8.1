@@ -14,8 +14,30 @@
                     {% endif %}"
                     {% if app.request.get('_route') == 'homepage' %}
                         aria-current="page"
-                    {% endif %}  href="{{ path('homepage') }}">
+                    {% endif %}  href="{{ path('homepage') }}" data-no-swup>
                     {{ 'global.home_label'|trans }}
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link link
+                {% if app.request.get('_route') == 'consignes' %}
+                    active
+                    {% endif %}"
+                    {% if app.request.get('_route') == 'consignes' %}
+                        aria-current="page"
+                    {% endif %}  href="{{ path('consignes') }}" data-no-swup>
+                    {{ 'consignes'|trans }}
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link link
+                {% if app.request.get('_route') starts with 'categorie' %}
+                    active
+                    {% endif %}"
+                    {% if app.request.get('_route') starts with 'categorie' %}
+                        aria-current="page"
+                    {% endif %}  href="{{ path('categorie_index') }}" data-no-swup>
+                    {{ 'catégories'|trans }}
                 </a>
             </li>
         </ul>

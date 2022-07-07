@@ -35,6 +35,21 @@ final class ArticleManager implements ArticleManagerInterface
     /**
      * @inheritDoc
      */
+    public function createOrUpdate(Article $article, bool $flush = true): void
+    {
+        /** @var int|null $id */
+        $id = $article->getId();
+        if ($id === null) {
+            $this->entityManager->persist($article);
+        }
+        if ($flush === true) {
+            $this->entityManager->flush();
+        }
+    }
+
+    /**
+     * @inheritDoc
+     */
     public function getAllArticlesVms(): Collection
     {
         $vms = $this->articleRepo->getAllArticlesVms();

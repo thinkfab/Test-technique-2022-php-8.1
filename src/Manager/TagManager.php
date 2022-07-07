@@ -6,8 +6,8 @@ use App\Contracts\Manager\TagManagerInterface;
 use App\Entity\Tag;
 use App\Repository\TagRepository;
 use Doctrine\ORM\EntityManagerInterface;
-use Doctrine\ORM\NonUniqueResultException;
 use InvalidArgumentException;
+use Pagerfanta\Pagerfanta;
 
 final class TagManager implements TagManagerInterface
 {
@@ -27,6 +27,29 @@ final class TagManager implements TagManagerInterface
             ));
         }
         $this->tagRepository = $repo;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function createOrUpdate(Tag $tag, bool $flush = true): void
+    {
+        /** @var int|null $id */
+        $id = $tag->getId();
+        if ($id === null) {
+            $this->entityManager->persist($tag);
+        }
+        if ($flush === true) {
+            $this->entityManager->flush();
+        }
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function findAllTags(int $limit = 10, int $page = 1): Pagerfanta
+    {
+        return $this->tagRepository->findAllTags($limit, $page);
     }
 
     /**

@@ -2,12 +2,20 @@
 
 namespace App\Contracts\Manager;
 
+use App\Entity\Article;
 use App\Entity\Tag;
 use App\ViewModel\ArticleVm;
 use Doctrine\Common\Collections\Collection;
 
 interface ArticleManagerInterface
 {
+    /**
+     * @param Article $article
+     * @param bool $flush
+     * @return void
+     */
+    public function createOrUpdate(Article $article, bool $flush = true): void;
+
     /**
      * @return Collection
      */

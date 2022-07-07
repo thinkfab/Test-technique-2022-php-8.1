@@ -1,0 +1,41 @@
+{#
+    Params:
+    {
+        tags : PagenFanta|Tag[]
+    }
+#}
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div class="row m-t-30">
+        <div class="col-12 col-md-8 offset-md-2">
+            <h2 class="text-decoration-underline">Example table de tags</h2>
+        </div>
+    </div>
+    <div class="row m-t-40">
+        <div class="col-12 col-md-6 offset-md-3">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th scope="col" class="width-33">Intitule</th>
+                    <th scope="col" class="width-33 text-center">Nombre d'article</th>
+                    <th scope="col" class="text-center">Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for tag in tags %}
+                    <tr>
+                        <td class="width-33">{{ tag.intitule|capitalize }}</td>
+                        <td class="width-33 text-center">{{ tag.article.count }}</td>
+                        <td class="text-center"><a class="btn btn-info" href="#lienVersEditionTag{{ tag.id }}">Edition</a><a class="btn btn-danger m-l-10" href="#lienVersSuppressionTag{{ tag.id }}">Supprimer</a></td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+            <div class="row">
+                <div class="col-12">
+                    {{ pagerfanta(tags) }}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
