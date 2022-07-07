@@ -51,27 +51,6 @@ Tu n'auras pas besoin de te connecter en tant qu'admin pour la réalisation de c
 Hormis pour te générer de nouvelles données.
 
 Pour commencer le test, une fois l'installation finalisée, je t'invite à te rendre sur l'url suivante [http://localhost:8088/read-me/consignes](http://localhost:8088/read-me/consignes)
-## <u>Objectif 1</u> *(obligatoire)*
-Le but de ce test est d'afficher les commentaires dans les pages d'articles. Il faudra utiliser [Symfony UX Twig Components](https://symfony.com/bundles/ux-twig-component/current/index.html).
-
-Si un article n'a pas de commentaire, tu n'as pas besoin d'afficher quelque chose.
-
-l'attendu :
-![Objectif 1](./test-technique-etape-1.png "Objectif 1")
-
-
-## <u>Objectif 2</u> *(obligatoire)*
-Tu devras changer l'animation des pages actuellement elles sont animés pour un affichage de slide vers le bas. l'attendu est un affichage de la page en fade-in fade-out.
-
-l'attendu :
-![Objectif 2](./test-technique-etape-2.gif "Objectif 2")
-
-## <u>Objectif 3</u> *(optionnel)*
-Lors de ce troisième objectif, je souhaite pouvoir bénéficier de la fonctionnalité d'ajout d'un commentaire à un article.
-Le nom de l'utilisateur est obligatoire et la date de création doit être générée automatiquement. Un petit plus serait de pouvoir utiliser un champ de texte CKEditor.
-
-*Pour cette troisième partie il n'y a pas d'attendu d'un point de vue design en particulier. Mais il faut que ca s'integre bien dans le site.*
-
 
 ### Erreurs communes lors de l'installation
 ><span style="background-color:#f55f69; color:black;">Could not create database test-technique for connection named default</span></br>
