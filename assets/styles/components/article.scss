@@ -17,6 +17,7 @@
     }
     .articles--article-short-tag {
       background-color: var(--bg-color);
+      color: var(--text-color);
       border-radius: 5px;
       padding: 1px 5px;
       margin: 0 5px 0 0;
@@ -47,6 +48,7 @@
   }
   .article-alone--tag {
     background-color: var(--bg-color);
+    color: var(--text-color);
     border-radius: 5px;
     padding: 1px 5px;
     margin: 0 5px 0 0;

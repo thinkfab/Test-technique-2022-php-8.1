@@ -15,6 +15,7 @@
         "doctrine/orm": "^2.12",
         "easycorp/easyadmin-bundle": "^4",
         "league/commonmark": "^2.3",
+        "mexitek/phpcolors": "^1.0",
         "nelmio/cors-bundle": "^2.2",
         "pagerfanta/doctrine-orm-adapter": "^3.6",
         "pagerfanta/twig": "^3.6",

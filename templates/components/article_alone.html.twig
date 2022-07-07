@@ -27,7 +27,8 @@
                         color       : tag.colorHexa,
                         intitule    : tag.intitule,
                         class       : 'article-alone--tag',
-                        slug        : tag.slug
+                        slug        : tag.slug,
+                        colorText   : render_light_or_dark_text_color(tag.colorHexa)
                     }) }}
                 {% endfor %}
             </div>
