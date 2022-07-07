@@ -50,8 +50,6 @@ Pour le reste de l'application, son fonctionnement est relativement simple à co
 Tu n'auras pas besoin de te connecter en tant qu'admin pour la réalisation de ce test technique.
 Hormis pour te générer de nouvelles données.
 
-Pour commencer le test, une fois l'installation finalisée, je t'invite à te rendre sur l'url suivante [http://localhost:8088/read-me/consignes](http://localhost:8088/read-me/consignes)
-
 ### Erreurs communes lors de l'installation
 ><span style="background-color:#f55f69; color:black;">Could not create database test-technique for connection named default</span></br>
  <span style="background-color:#f55f69; color:black;">An exception occurred while executing a query: SQLSTATE[HY000]: General error: 1007 Can't create database 'test-technique'; database exists</span>

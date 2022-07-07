@@ -25,7 +25,7 @@
     }
   }
 }
-.link.nav-link.active {
+.link.nav-link.active, .nav-link.dropdown-toggle.active {
   font-weight: 700 !important;
   transition: all 0.2s;
 }

@@ -1,0 +1,18 @@
+{% extends 'home/consignes.html.twig' %}
+{% block consignes %}
+    <div class="row">
+        <div class="col-12 col-md-8 offset-md-2 consignes--confirmed-react">
+            {% apply markdown_to_html %}
+                Je t'ai mis à disposition une api qui expose les articles, les tags et les users.
+                Cette api est accessible via cette url <a href="http://localhost:8088/api" data-no-swup target="_blank">http://localhost:8088/api</a>
+                Il n'y a pas besoin d'authentification pour récupérer les datas de cette API.
+                Actuellement, le projet n'est pas encore configuré pour du développement REACT. Cependant webpack est installé.
+
+                ## <u>Objectif 1</u>
+                1. Mettre en place une SPA sur l'url <a href="http://localhost:8088/react/index-copy" data-no-swup target="_blank">http://localhost:8088/react/index-copy</a> (le template associé se trouve ici "templates/home/react.html.twig")
+                2. À l'aide de call API il faudra réaliser une copie conforme de la page d'accueil de l'application. La seule différence sera qu'il faut réaliser une pagination des articles, nous voulons 7 articles par page.
+                3. Je souhaite également que lorsque je clique sur un article, je puisse voir son contenu à l'image de ce qui est fait sur la page d'accueil. Il faudra cependant que l'on reste dans le principe d'une SPA.
+            {% endapply %}
+        </div>
+    </div>
+{% endblock %}

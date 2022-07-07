@@ -18,16 +18,24 @@
                     {{ 'global.home_label'|trans }}
                 </a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link link
-                {% if app.request.get('_route') == 'consignes' %}
-                    active
-                    {% endif %}"
-                    {% if app.request.get('_route') == 'consignes' %}
-                        aria-current="page"
-                    {% endif %}  href="{{ path('consignes') }}" data-no-swup>
+            <li class="nav-item dropdown">
+                <a
+                        class="nav-link dropdown-toggle {% if app.request.get('_route') starts with 'consignes' %}active{% endif %}"
+                        href="#"
+                        id="navConsignes"
+                        role="button"
+                        data-bs-toggle="dropdown"
+                        aria-expanded="false"
+                >
                     {{ 'consignes'|trans }}
                 </a>
+                <ul class="dropdown-menu" aria-labelledby="navConsignes">
+                    <li><a class="dropdown-item" href="{{ path('consignes_junior_php') }}" data-no-swup>Junior PHP/SF</a></li>
+                    <li><a class="dropdown-item" href="{{ path('consignes_confirmed_php') }}" data-no-swup>Confirmé PHP/SF</a></li>
+                    <li><a class="dropdown-item" href="{{ path('consignes_confirmed_react') }}" data-no-swup>Confirmé React</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="{{ path('consignes_installation') }}" data-no-swup>Installation</a></li>
+                </ul>
             </li>
             <li class="nav-item">
                 <a class="nav-link link
@@ -38,6 +46,17 @@
                         aria-current="page"
                     {% endif %}  href="{{ path('categorie_index') }}" data-no-swup>
                     {{ 'catégories'|trans }}
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link link
+                {% if app.request.get('_route') == 'react_spa_page' %}
+                    active
+                    {% endif %}"
+                    {% if app.request.get('_route') == 'react_spa_page' %}
+                        aria-current="page"
+                    {% endif %}  href="{{ path('react_spa_page') }}" data-no-swup>
+                    {{ 'React'|trans }}
                 </a>
             </li>
         </ul>

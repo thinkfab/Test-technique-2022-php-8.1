@@ -36,10 +36,40 @@ class HomeController extends AbstractController
     #[Route('/read-me/consignes', name: 'consignes')]
     public function consignes(): Response
     {
-        return $this->render('home/consignes.html.twig');
+        return $this->render('home/consignes.html.twig', array(
+            'display_button' => true
+        ));
     }
 
     /**
+     * @return Response
+     */
+    #[Route('/read-me/consignes/junior-php-sf', name: 'consignes_junior_php')]
+    public function consignesJunior(): Response
+    {
+        return $this->render('home/consignes/junior-php.html.twig');
+    }
+
+    /**
+     * @return Response
+     */
+    #[Route('/read-me/consignes/confirmed-php-sf', name: 'consignes_confirmed_php')]
+    public function consignesConfirmedPhp(): Response
+    {
+        return $this->render('home/consignes/confirmed-php.html.twig');
+    }
+
+    /**
+     * @return Response
+     */
+    #[Route('/read-me/consignes/confirmed-react', name: 'consignes_confirmed_react')]
+    public function consignesConfirmedReact(): Response
+    {
+        return $this->render('home/consignes/confirmed-react.html.twig');
+    }
+
+    /**
+     * @param Request $request
      * @param TagManagerInterface $tagManager
      * @return Response
      */
@@ -53,6 +83,14 @@ class HomeController extends AbstractController
         return $this->render('home/examples.html.twig', array(
             'tags' => $tags
         ));
+    }
+
+    /**
+     * @return Response
+     */
+    #[Route('/react/index-copy', name: 'react_spa_page')]
+    public function reactPage(): Response {
+        return $this->render('home/react.html.twig');
     }
 
 }
