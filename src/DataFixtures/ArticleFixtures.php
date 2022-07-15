@@ -23,6 +23,7 @@ class ArticleFixtures extends AbstractBaseFixtures implements DependentFixtureIn
         $faker = self::faker();
         /** @var User $user */
         $user = $this->getReference(self::USER_REF);
+        $categorie = $this->getReference(self::CATEGORY_REF . random_int(1, 10));
         for ($i = 0; $i < self::NUMBER_OF_ARTICLES; $i++) {
             $charNumber = random_int(700, 5000);
             $titre = "Article #$i : " . $faker->word;
@@ -33,7 +34,8 @@ class ArticleFixtures extends AbstractBaseFixtures implements DependentFixtureIn
                 ->setContent($faker->realText($charNumber))
                 ->setCreatedAt(DateTimeImmutable::createFromMutable($faker->dateTime))
                 ->setIsPublished(true)
-                ->setUser($user);
+                ->setUser($user)
+                ->setCategorie($categorie);
             $manager->persist($article);
             $manager->flush();
             $this->addReference(self::ARTICLE_REF . $i, $article);
@@ -43,7 +45,8 @@ class ArticleFixtures extends AbstractBaseFixtures implements DependentFixtureIn
     public function getDependencies()
     {
         return array(
-            UserFixtures::class
+            UserFixtures::class,
+            CategorieFixtures::class
         );
     }
 }

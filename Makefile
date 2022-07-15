@@ -56,7 +56,11 @@ assets-install: ## Install composer vendor and setup assets
 grumphp-install: ## Install javascript modules
 	$(DOCKER_COMPOSE_DEV) run --rm php bash -ci 'php ./vendor/bin/grumphp git:init'
 
-fixtures-install: ## Install fixtures
+make-migration: ## make migration file
+	$(DOCKER_COMPOSE_DEV) run --rm php bash -ci 'php bin/console make:migration'
+
+fixtures-install: ## Install fixtures  
+	$(DOCKER_COMPOSE_DEV) run --rm php bash -ci 'php bin/console make:migration'
 	$(DOCKER_COMPOSE_DEV) run --rm php bash -ci 'php bin/console doctrine:database:drop --force'
 	$(DOCKER_COMPOSE_DEV) run --rm php bash -ci 'php bin/console doctrine:database:create'
 	$(MAKE) db-migrate
