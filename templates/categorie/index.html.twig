@@ -1,14 +1,45 @@
-{% extends 'base.html.twig' %}
 
+{#
+    Params:
+    {
+        tags : PagenFanta|Tag[]
+    }
+#}
+{% extends 'base.html.twig' %}
 {% block body %}
-    <div class="row m-t-40">
-        <div class="col-12 col-md-8 offset-md-2 text-center">
-            <h4 class="fst-italic">
-                Page pour le test technique confirmé (PHP/Symfony)
-            </h4>
+    <div class="row m-t-30">
+        <div class="col-12 col-md-8 offset-md-2">
+            <h2 class="text-decoration-underline">Table des catégories</h2>
         </div>
     </div>
-{#
-    Il faudra supprimer les quelques lignes ci dessus et implementer le code ici...
-#}
+    <div class="row m-t-40">
+        <div class="col-12 col-md-6 offset-md-3">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th scope="col" class="width-33">Intitule</th>
+                    <th scope="col" class="width-33 text-center">Nombre d'articles</th>
+                    <th scope="col" class="text-center">Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for categorie in categories %}
+                    <tr>
+                        <td class="width-33">{{ categorie.intitule|capitalize }}</td>
+                        <td class="width-33 text-center">{{ categorie.articles.count }}</td>
+                        <td class="text-center">
+                            <a class="btn btn-info" href="{{ path('categorie_edit', {'id': categorie.id}) }}">Edition</a>
+                            <a class="btn btn-danger m-l-10" href="{{ path('categorie_delete', {'id': categorie.id}) }}">Supprimer</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+            <div class="row">
+                <div class="col-12">
+                    {{ pagerfanta(categories) }}
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}
