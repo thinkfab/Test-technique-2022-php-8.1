@@ -41,5 +41,17 @@
         <div class="row">
             <div class="col-12 article-alone--author">{{ auteur }}</div>
         </div>
+        <div class="row justify-content-md-center">
+            <div class="col-lg-6">
+                {% for commentaire in commentaires %}
+                    {{ component('commentaire_alone', {
+                        createdAt   : commentaire.createdAt,
+                        username    : commentaire.username,
+                        content     : commentaire.content,
+                        class       : 'article-alone--commentaire_alone-container',
+                    }) }}
+                {% endfor %}
+            </div>
+        </div>
     </div>
 </div>
