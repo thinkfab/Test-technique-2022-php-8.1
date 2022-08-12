@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouvelle Categorie{% endblock %}
+
+{% block body %}
+<div class="container">
+    <h1>Créer une nouvelle categorie</h1>
+
+    {{ include('categorie/_form.html.twig') }}
+
+    <a class="btn btn-primary" href="{{ path('categorie_index') }}">Retour à la liste</a>
+
+</div>
+<script>
+    $(document).ready(function() {
+        // you may need to change this code if you are not using Bootstrap Datepicker
+        $('.js-datepicker').datepicker({
+            format: 'dd-mm-yyyy'
+        });
+    });
+</script>
+{% endblock %}

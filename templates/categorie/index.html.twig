@@ -3,10 +3,13 @@
 {% block body %}
 <div class="container">
     <div class="row m-t-40">
-        <div class="col-12 col-md-8 offset-md-2 text-center">
+        <div class="col-10 col-md-8 offset-md-2 text-center">
             <h4 class="fst-italic">
                 Les listes des categories
             </h4>
+        </div>
+        <div class="col-2 col-md-2  text-center">
+            <a class="btn btn-success" href="{{ path('categorie_new') }}">Créer un nouveau</a>
         </div>
     </div>
     <table class="table table-striped">
@@ -27,8 +30,8 @@
                 <td>{{ categorie.createdAt ? categorie.createdAt|date('Y-m-d H:i:s') : '' }}</td>
                 <td>{{ categorie.updatedAt ? categorie.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
                 <td>
-                    <a class="btn btn-primary" href="{{ path('app_categorie_crud_edit', {'id': categorie.id}) }}">Modifier</a>
-                    <a class="btn btn-danger" href="{{ path('app_categorie_crud_edit', {'id': categorie.id}) }}">Supprimer</a>
+                    <a class="btn btn-primary" href="{{ path('categorie_edit', {'id': categorie.id}) }}">Modifier</a>
+                    <a class="btn btn-danger" href="{{ path('categorie_delete', {'id': categorie.id}) }}">Supprimer</a>
                 </td>
             </tr>
         {% else %}
