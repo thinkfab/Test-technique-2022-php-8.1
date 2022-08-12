@@ -47,7 +47,8 @@ class ArticleFixtures extends AbstractBaseFixtures implements DependentFixtureIn
     public function getDependencies()
     {
         return array(
-            UserFixtures::class
+            UserFixtures::class,
+            CategoriesFixtures::class
         );
     }
 }
