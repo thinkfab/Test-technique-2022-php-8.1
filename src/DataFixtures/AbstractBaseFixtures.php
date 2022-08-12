@@ -15,6 +15,7 @@ abstract class AbstractBaseFixtures extends Fixture
     public const ARTICLE_REF = 'article_';
     public const COMMENT_REF = '_commentaire_';
     public const TAG_REF = 'tag_';
+    public const NUMBER_OF_CATEGORIE = 15;
     protected static function faker(): Generator
     {
         return Factory::create('fr_FR');

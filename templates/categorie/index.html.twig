@@ -1,14 +1,42 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+<div class="container">
     <div class="row m-t-40">
         <div class="col-12 col-md-8 offset-md-2 text-center">
             <h4 class="fst-italic">
-                Page pour le test technique confirmé (PHP/Symfony)
+                Les listes des categories
             </h4>
         </div>
     </div>
-{#
-    Il faudra supprimer les quelques lignes ci dessus et implementer le code ici...
-#}
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Numero</th>
+                <th>Intitulé</th>
+                <th>Date de création</th>
+                <th>Date de modification</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for categorie in categories %}
+            <tr>
+                <td>{{ categorie.id }}</td>
+                <td>{{ categorie.description }}</td>
+                <td>{{ categorie.createdAt ? categorie.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ categorie.updatedAt ? categorie.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a class="btn btn-primary" href="{{ path('app_categorie_crud_edit', {'id': categorie.id}) }}">Modifier</a>
+                    <a class="btn btn-danger" href="{{ path('app_categorie_crud_edit', {'id': categorie.id}) }}">Supprimer</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">Pas de resultat</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
 {% endblock %}
