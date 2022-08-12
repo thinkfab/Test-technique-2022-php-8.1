@@ -3,8 +3,11 @@
 namespace App\Repository;
 
 use App\Entity\Categorie;
+use App\Helper\DoctrineHelper;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use Pagerfanta\Doctrine\ORM\QueryAdapter;
+use Pagerfanta\Pagerfanta;
 
 /**
  * @extends ServiceEntityRepository<Categorie>
@@ -38,6 +41,22 @@ class CategorieRepository extends ServiceEntityRepository
             $this->getEntityManager()->flush();
         }
     }
+
+    /**
+     * @param int $limit
+     * @param int $page
+     * @return Pagerfanta
+     */
+    public function findAllCategories(int $limit = 10, int $page = 1): Pagerfanta
+    {
+        $catAlias = DoctrineHelper::ALIAS_CATEGORIE;
+        $query = $this->createQueryBuilder($catAlias);
+        $pagerfanta = new Pagerfanta(new QueryAdapter($query, true, false));
+        $pagerfanta->setMaxPerPage($limit);
+        $pagerfanta->setCurrentPage($page);
+        return $pagerfanta;
+    }
+    
 
 //    /**
 //     * @return Categorie[] Returns an array of Categorie objects

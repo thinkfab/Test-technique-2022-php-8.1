@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Contracts\Manager\CategorieManagerInterface;
 use App\Entity\Categorie;
 use App\Form\CategorieType;
 use App\Repository\CategorieRepository;
@@ -16,10 +17,13 @@ class CategorieController extends AbstractController
      * @return Response
      */
     #[Route('/categorie/liste', name:'categorie_index')]
-    public function index(CategorieRepository $categorieRepository): Response
+    public function index(Request $request, CategorieManagerInterface $categorieManagerInterface, CategorieRepository $categorieRepository): Response
     {
+        $page = $request->query->get('page', 1);
+        $categories = $categorieManagerInterface->findAllCategories(10, $page);
+
         return $this->render('categorie/index.html.twig', [
-            'categories' => $categorieRepository->findAll(),
+            'categories' => $categories,
         ]);
     }
 

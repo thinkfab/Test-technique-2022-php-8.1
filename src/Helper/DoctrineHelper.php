@@ -10,6 +10,7 @@ final class DoctrineHelper
     public const ALIAS_TAG = 'tag_';
     public const ALIAS_COMMENTAIRE = 'commentaire_';
     public const ALIAS_USER = 'user_';
+    public const ALIAS_CATEGORIE = 'categorie_';
 
     public const ORDER_DESC = 'DESC';
     public const ORDER_ASC = 'ASC';
