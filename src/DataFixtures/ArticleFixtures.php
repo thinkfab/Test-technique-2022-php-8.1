@@ -3,6 +3,7 @@
 namespace App\DataFixtures;
 
 use App\Entity\Article;
+use App\Entity\Categorie;
 use App\Entity\User;
 use DateTimeImmutable;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
@@ -21,6 +22,8 @@ class ArticleFixtures extends AbstractBaseFixtures implements DependentFixtureIn
     public function load(ObjectManager $manager): void
     {
         $faker = self::faker();
+        /** @var Categorie $category */
+        $category = $this->getReference(self::CATEGORIE_REF);
         /** @var User $user */
         $user = $this->getReference(self::USER_REF);
         for ($i = 0; $i < self::NUMBER_OF_ARTICLES; $i++) {
@@ -33,6 +36,7 @@ class ArticleFixtures extends AbstractBaseFixtures implements DependentFixtureIn
                 ->setContent($faker->realText($charNumber))
                 ->setCreatedAt(DateTimeImmutable::createFromMutable($faker->dateTime))
                 ->setIsPublished(true)
+                ->setCategorie($category)
                 ->setUser($user);
             $manager->persist($article);
             $manager->flush();

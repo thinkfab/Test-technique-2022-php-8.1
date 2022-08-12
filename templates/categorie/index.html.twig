@@ -17,6 +17,7 @@
             <tr>
                 <th>Numero</th>
                 <th>Intitulé</th>
+                <th>Nombre d'article</th>
                 <th>Date de création</th>
                 <th>Date de modification</th>
                 <th>Actions</th>
@@ -27,6 +28,7 @@
             <tr>
                 <td>{{ categorie.id }}</td>
                 <td>{{ categorie.description }}</td>
+                <td>{{ categorie.articles | length }}</td>
                 <td>{{ categorie.createdAt ? categorie.createdAt|date('Y-m-d H:i:s') : '' }}</td>
                 <td>{{ categorie.updatedAt ? categorie.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
                 <td>

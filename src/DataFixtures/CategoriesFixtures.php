@@ -26,6 +26,7 @@ class CategoriesFixtures extends AbstractBaseFixtures
 
             $manager->persist($category);
             $manager->flush();
+            $this->addReference(self::CATEGORIE_REF . $i, $category);
         }
     }
 }
