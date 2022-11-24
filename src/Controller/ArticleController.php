@@ -18,11 +18,11 @@ class ArticleController extends AbstractController
     #[Route('/article/{slug}', name: 'article_index')]
     public function articleAction(
         string $slug,
-        ArticleManagerInterface $articleManager
+        ArticleManagerInterface $articleManager,
     ): Response {
         $article = $articleManager->getArticleVmBySlug($slug);
         return $this->render('article/index.html.twig', array(
-            'article' => $article
+            'article' => $article,
         ));
     }
 
@@ -44,7 +44,7 @@ class ArticleController extends AbstractController
         $tag = $tagManager->findOneBySlug($slugTag);
         return $this->render('article/index.html.twig', array(
             'article'   => $article,
-            'tag'       => $tag
+            'tag'       => $tag,
         ));
     }
 
