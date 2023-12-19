@@ -4,46 +4,56 @@ namespace App\DataFixtures;
 
 use App\Entity\Article;
 use App\Entity\User;
+use App\Entity\Category;
 use DateTimeImmutable;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
 use Symfony\Component\String\Slugger\SluggerInterface;
+use Doctrine\ORM\EntityManagerInterface;
 
 class ArticleFixtures extends AbstractBaseFixtures implements DependentFixtureInterface
 {
     private SluggerInterface $slugger;
+    private EntityManagerInterface $entityManager;
 
-    public function __construct(SluggerInterface $slugger)
+    public function __construct(SluggerInterface $slugger, EntityManagerInterface $entityManager)
     {
         $this->slugger = $slugger;
+        $this->entityManager = $entityManager;
     }
 
     public function load(ObjectManager $manager): void
     {
-        $faker = self::faker();
-        /** @var User $user */
-        $user = $this->getReference(self::USER_REF);
-        for ($i = 0; $i < self::NUMBER_OF_ARTICLES; $i++) {
-            $charNumber = random_int(700, 5000);
-            $titre = "Article #$i : " . $faker->word;
-            $slug = $this->slugger->slug($titre);
-            $article = new Article();
-            $article->setTitre($titre)
-                ->setSlug($slug)
-                ->setContent($faker->realText($charNumber))
-                ->setCreatedAt(DateTimeImmutable::createFromMutable($faker->dateTime))
-                ->setIsPublished(true)
-                ->setUser($user);
-            $manager->persist($article);
-            $manager->flush();
-            $this->addReference(self::ARTICLE_REF . $i, $article);
+        $arrayCategory = $this->entityManager->getRepository(Category::class)->findAll();
+
+        if ($arrayCategory) {
+            $faker = self::faker();
+            /** @var User $user */
+            $user = $this->getReference(self::USER_REF);
+            for ($i = 0; $i < self::NUMBER_OF_ARTICLES; $i++) {
+                $charNumber = random_int(700, 5000);
+                $titre = "Article #$i : " . $faker->word;
+                $slug = $this->slugger->slug($titre);
+                $article = new Article();
+                $article->setTitre($titre)
+                    ->setSlug($slug)
+                    ->setContent($faker->realText($charNumber))
+                    ->setCreatedAt(DateTimeImmutable::createFromMutable($faker->dateTime))
+                    ->setIsPublished(true)
+                    ->setUser($user)
+                    ->setCategory($arrayCategory[array_rand($arrayCategory)]);
+                $manager->persist($article);
+                $manager->flush();
+                $this->addReference(self::ARTICLE_REF . $i, $article);
+            }
         }
     }
 
     public function getDependencies()
     {
         return array(
-            UserFixtures::class
+            UserFixtures::class,
+            CategoryFixtures::class
         );
     }
 }

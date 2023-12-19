@@ -59,6 +59,10 @@ class Article
     #[Groups(['article:list', 'article:item'])]
     private $slug;
 
+    #[ORM\ManyToOne(inversedBy: 'articles')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?category $category = null;
+
     public function __construct()
     {
         $this->commentaires = new ArrayCollection();
@@ -200,6 +204,18 @@ class Article
     public function setSlug(string $slug): self
     {
         $this->slug = $slug;
+
+        return $this;
+    }
+
+    public function getCategory(): ?category
+    {
+        return $this->category;
+    }
+
+    public function setCategory(?category $category): static
+    {
+        $this->category = $category;
 
         return $this;
     }
